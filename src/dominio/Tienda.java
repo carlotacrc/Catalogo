@@ -1,37 +1,31 @@
-
 package dominio;
 import java.util.ArrayList;
+import java.io.Serializable;
+public class implements Serializable Tienda {
+   
+    private ArrayList<Producto> productos;
 
-
-public class Tienda {
-    private String nombre;
-    private ArrayList<Catalogo> almacenes;
-
-    public Tienda(String nombre) {
-        this.nombre = nombre;
-        almacenes = new ArrayList<>();
+    public Tienda() {
+        productos = new ArrayList<>();
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    public String getNombre(){
-        return nombre;
+    public void annadir (Producto producto) {
+        productos.add(producto);
     }
 
-    public Tienda add(Catalogo almacen) {
-        almacenes.add(almacen);
-        return this;
+    public void mostrarProductos() {
+        for (Producto producto : productos) {
+            System.out.println(producto);
+        }
     }
 
-    public char[] mostrarCatalogo() {
-        return null;
-    }
-
-    public void agregarProductoCarrito(String nombre2, String tipo, String talla, double precio) {
-    }
-
-    public void quitarProductoCarrito(String nombre2, String tipo, String talla, double precio) {
+    public void cambiarCaracteristicas(String nombre, String tipo, String talla, double precio) {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equals(nombre)) {
+                producto.setTipo(tipo);
+                producto.setTalla(talla);
+                producto.setPrecio(precio);
+            }
+        }
     }
 }
